@@ -153,14 +153,20 @@ class ExpenseManager:
 
 
     def by_category(self):
-        """ Calculate the expenses by caetgory """
+        """ Calculate the expenses by category """
 
         # 1st element is subtotal; 2nd element is percentage
         dict_category = {
             "School": [0.0, 0.0],
             "Food": [0.0, 0.0],
             "Health": [0.0, 0.0],
-            "Family": [0.0, 0.0]}
+            "Family": [0.0, 0.0],
+            "Business": [0.0, 0.0],
+            "Clothing": [0.0, 0.0],
+            "Electronics": [0.0, 0.0],
+            "Subscription": [0.0, 0.0],
+            "Groceries": [0.0, 0.0],
+            "Transportation": [0.0, 0.0]}
         TODAY = datetime.today()
         Total = 0
 
@@ -183,6 +189,24 @@ class ExpenseManager:
                 if value.Category == "Family":
                     dict_category["Family"][0] = dict_category["Family"][0] + float(value.Amount)
                     dict_category["Family"][1] = format(dict_category["Family"][0] / Total * 100, ".2f")
+                if value.Category == "Business":
+                    dict_category["Business"][0] = dict_category["Business"][0] + float(value.Amount)
+                    dict_category["Business"][1] = format(dict_category["Business"][0] / Total * 100, ".2f")
+                if value.Category == "Clothing":
+                    dict_category["Clothing"][0] = dict_category["Clothing"][0] + float(value.Amount)
+                    dict_category["Clothing"][1] = format(dict_category["Clothing"][0] / Total * 100, ".2f")
+                if value.Category == "Electronics":
+                    dict_category["Electronics"][0] = dict_category["Electronics"][0] + float(value.Amount)
+                    dict_category["Electronics"][1] = format(dict_category["Electronics"][0] / Total * 100, ".2f")
+                if value.Category == "Subscription":
+                    dict_category["Subscription"][0] = dict_category["Subscription"][0] + float(value.Amount)
+                    dict_category["Subscription"][1] = format(dict_category["Subscription"][0] / Total * 100, ".2f")
+                if value.Category == "Groceries":
+                    dict_category["Groceries"][0] = dict_category["Groceries"][0] + float(value.Amount)
+                    dict_category["Groceries"][1] = format(dict_category["Groceries"][0] / Total * 100, ".2f")
+                if value.Category == "Transportation":
+                    dict_category["Transportation"][0] = dict_category["Transportation"][0] + float(value.Amount)
+                    dict_category["Transportation"][1] = format(dict_category["Transportation"][0] / Total * 100, ".2f")
             
         return dict_category
 
