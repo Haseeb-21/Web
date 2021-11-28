@@ -14,13 +14,13 @@
                         <h2> Balance </h2>
                         <p> ${{balanceBudget["balance"]}} </p>
                         <input class="text-box" name="balance" placeholder="Enter Your Balance"><br>
-                        <button name="button"><i class="material-icons">pets</i></button>
+                        <button name="button"><i class="material-icons">add</i></button>
                     </div>
                     <div class="budget_container">
                         <h2> Monthly Budget </h2>
                         <p> ${{balanceBudget["budget"]}} </p>
                         <input class="text-box" name="budget" placeholder="Enter Your Budget"><br>
-                        <button name="button"><i class="material-icons">pets</i></button>
+                        <button name="button"><i class="material-icons">add</i></button>
                     </div>
                 </div>
             </div>
@@ -49,37 +49,37 @@
 
                         <input type="radio" name="category" value="School">
                         <label class="radioLabel" for="school">School</label>
-
-                        <input type="radio" name="category" value="Food">
-                        <label class="radioLabel" for="food">Food</label>
-
-                        <input type="radio" name="category" value="Health">
-                        <label class="radioLabel" for="health">Health</label>
-
-                        <input type="radio" name="category" value="Family">
-                        <label class="radioLabel" for="family">Family</label>
-
-                        <input type="radio" name="category" value="Business">
-                        <label class="radioLabel" for="business">Business</label>
-
-                        <input type="radio" name="category" value="Clothing">
-                        <label class="radioLabel" for="clothing">Clothing</label>
-
-                        <input type="radio" name="category" value="Electronics">
-                        <label class="radioLabel" for="electronics">Electronics</label>
-
-                        <input type="radio" name="category" value="Subscription">
-                        <label class="radioLabel" for="subscription">Subscription</label>
+                        
+                        <input type="radio" name="category" value="Food" style="margin-left: 46px;">
+                        <label class="radioLabel" for="food">Food</label><br>
 
                         <input type="radio" name="category" value="Groceries">
                         <label class="radioLabel" for="groceries">Groceries</label>
 
+                        <input type="radio" name="category" value="Family" style="margin-left: 27px;">
+                        <label class="radioLabel" for="family">Family</label><br>
+
+                        <input type="radio" name="category" value="Business">
+                        <label class="radioLabel" for="business">Business</label>
+
+                        <input type="radio" name="category" value="Clothing" style="margin-left: 29px;">
+                        <label class="radioLabel" for="clothing">Clothing</label><br>
+
+                        <input type="radio" name="category" value="Electronics">
+                        <label class="radioLabel" for="electronics">Electronics</label>
+                        
+                        <input type="radio" name="category" value="Health" style="margin-left: 16px;">
+                        <label class="radioLabel" for="health">Health</label><br>
+                        
+                        <input type="radio" name="category" value="Subscription">
+                        <label class="radioLabel" for="subscription">Subscription</label>
+                        
                         <input type="radio" name="category" value="Transportation">
-                        <label class="radioLabel" for="transportation">Transportation</label>
+                        <label class="radioLabel" for="transportation">Transportation</label><br>
                     </div>
                     <br>
-                    <input class="text-box" name="amount" , placeholder="Amount"><br> <br>
-                    <button name="button"><i class="material-icons">pets</i></button>
+                    <input class="text-box" name="amount" , placeholder="Amount"><br>
+                    <button name="button"><i class="material-icons">add</i></button>
                 </form>
             </div>
             <h2 class="sectionHeading">All Expenses</h2>
@@ -148,8 +148,15 @@
                 </tr>
                 {% endfor %}
             </table>
-
-
+            <h3>Today's Spending <br>({{ todaysDate }}) </h3>
+            <p style="position:relative; bottom: 40px; font-size: 40px;">${{ todaysTotal }}</p>
+            
+            <h3 style="position:relative; bottom: 60px;">This Week's Spending <br>({{ weekAgo }} - {{ todaysDateFmtd }}) </h3>
+            <p style="position:relative; bottom: 100px;font-size: 40px;">${{ weeklyTotal }}</p>
+            
+            <h3 style="position:relative; bottom: 120px;">This Month's Spending <br>({{ currMonth }})</h3>
+            <p style="position:relative; bottom: 150px;font-size: 40px;">${{ monthsTotal }}</p>
+           
         </div>
     </div>
 </div>

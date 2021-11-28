@@ -1,15 +1,14 @@
 from Models.expense import Expense
 import csv
 from datetime import datetime, timedelta
-
+import datetime as DT
 
 class ExpenseManager:
-
     def __init__(self):
         self._expenses = {}
 
-    
     def add_expense(self, expense):
+
         """ Add a new expense to the Expense Manager
 
         :param expense: A new expense from user
@@ -102,7 +101,47 @@ class ExpenseManager:
             largest_ID = id[0]
         return largest_ID
             
-
+    def todays_spending(self):
+	    """Calculate todays spending"""
+	    TODAY = datetime.today().strftime('%Y-%m-%d')
+	    todays_total = 0
+	    
+	    for (key, value) in self._expenses.items():
+            	if value.Date.strftime('%Y-%m-%d') == TODAY:
+                	todays_total += float(value.Amount)
+                	
+	    return "{:.2f}".format(todays_total)
+	    
+    def weekly_spending(self):
+    	""" Calculate last 7 days spending """
+    	CURR_MONTH = datetime.today().strftime('%Y-%m')
+    	TODAY = int(DT.date.today().strftime('%d'))
+    	WEEK_AGO = int((DT.date.today() - DT.timedelta(days=7)).strftime('%d'))
+    	
+    	weekly_total = 0
+    	
+    	for (key, value) in self._expenses.items():
+            	if value.Date.strftime('%Y-%m') == CURR_MONTH:
+            		if int(value.Date.strftime('%d')) <= TODAY and int(value.Date.strftime('%d')) >= WEEK_AGO:
+                		weekly_total += float(value.Amount)
+    	
+    	return "{:.2f}".format(weekly_total)
+    	
+    def monthly_spending(self):
+    	""" Calculate current months spending """
+    	CURR_MONTH = datetime.today().strftime('%Y-%m')
+    	
+    	months_total = 0
+    	
+    	for (key, value) in self._expenses.items():
+            	if value.Date.strftime('%Y-%m') == CURR_MONTH:
+                	months_total += float(value.Amount)
+    	
+    	return "{:.2f}".format(months_total)
+    	
+            	
+    
+    
     def by_month_expense(self):
         """ Calculate the expenses by month (last 1 year)"""
         
@@ -218,3 +257,4 @@ if __name__ == "__main__":
 
     print(EM.get_expenses())    
     print(EM.read_largest_id("expense.csv"))
+
